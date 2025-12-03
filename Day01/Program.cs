@@ -52,6 +52,7 @@ static void Part2()
     var input = File.ReadAllLines("input.txt");
 
     int pos = 50;
+    int newPos;
     int count = 0;
 
     const int minPos = 0;
@@ -59,46 +60,46 @@ static void Part2()
 
     foreach (var line in input)
     {
-        Console.WriteLine($"start {pos} turn {line} count {count}");
-
         var dir = line[0];
-        var distance = int.Parse(line.Substring(1));
+        var distance = int.Parse(line[1..]);
+
+        if (distance >= (maxPos + 1))
+        {
+            count += distance / (maxPos + 1);
+            distance %= maxPos + 1;
+        }
 
         if (dir == 'L')
         {
-            if (pos == 0)
+            newPos = pos - distance;
+            if (newPos < minPos)
             {
-                count--;
+                if (pos > minPos)
+                {
+                    count++;
+                }
+                newPos += maxPos + 1;
             }
-            pos -= distance;
+            pos = newPos;
         }
         else if (dir == 'R')
         {
-            pos += distance;
-        }
-
-        while (pos < minPos)
-        {
-            pos += maxPos + 1;
-            if (pos != 0)
+            newPos = pos + distance;
+            if (newPos > maxPos)
             {
-                count++;
+                if (newPos != maxPos + 1)
+                {
+                    count++;
+                }
+                newPos %= maxPos + 1;
             }
-        }
-        while (pos > maxPos)
-        {
-            pos -= maxPos + 1;
-            if (pos != 0)
-            {
-                count++;
-            }
+            pos = newPos;
         }
 
         if (pos == 0)
         {
             count++;
         }
-        Console.WriteLine($"end {pos} count {count}");
     }
 
     Console.WriteLine($"Part 2 {count}");
