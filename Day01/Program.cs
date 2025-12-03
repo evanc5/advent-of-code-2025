@@ -4,6 +4,7 @@ Part2();
 static void Part1()
 {
     var input = File.ReadAllLines("input.txt");
+    var startTime = System.Diagnostics.Stopwatch.GetTimestamp();
 
     int pos = 50;
     int count = 0;
@@ -44,12 +45,15 @@ static void Part1()
         }
     }
 
-    Console.WriteLine($"Part 1 {count}");
+    var elapsedTime = System.Diagnostics.Stopwatch.GetElapsedTime(startTime);
+    Console.WriteLine($"Part 1: {count}");
+    System.Diagnostics.Debug.WriteLine($"Elapsed time: {elapsedTime}");
 }
 
 static void Part2()
 {
     var input = File.ReadAllLines("input.txt");
+    var startTime = System.Diagnostics.Stopwatch.GetTimestamp();
 
     int pos = 50;
     int newPos;
@@ -102,5 +106,7 @@ static void Part2()
         }
     }
 
-    Console.WriteLine($"Part 2 {count}");
+    var elapsedTime = System.Diagnostics.Stopwatch.GetElapsedTime(startTime);
+    Console.WriteLine($"Part 2: {count}");
+    System.Diagnostics.Debug.WriteLine($"Elapsed time: {elapsedTime}");
 }

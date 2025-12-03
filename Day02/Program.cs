@@ -4,6 +4,7 @@ Part2();
 static void Part1()
 {
     var input = File.ReadAllText("input.txt").Split(',');
+    var startTime = System.Diagnostics.Stopwatch.GetTimestamp();
 
     long total = 0;
 
@@ -25,12 +26,15 @@ static void Part1()
         }
     }
 
-    Console.WriteLine($"Part 1 {total}");
+    var elapsedTime = System.Diagnostics.Stopwatch.GetElapsedTime(startTime);
+    Console.WriteLine($"Part 1: {total}");
+    System.Diagnostics.Debug.WriteLine($"Part 1: {elapsedTime}");
 }
 
 static void Part2()
 {
     var input = File.ReadAllText("input.txt").Split(',');
+    var startTime = System.Diagnostics.Stopwatch.GetTimestamp();
 
     long total = 0;
     bool mismatch = false;
@@ -70,5 +74,7 @@ static void Part2()
         }
     }
 
-    Console.WriteLine($"Part 2 {total}");
+    var elapsedTime = System.Diagnostics.Stopwatch.GetElapsedTime(startTime);
+    Console.WriteLine($"Part 2: {total}");
+    System.Diagnostics.Debug.WriteLine($"Part 1: {elapsedTime}");
 }
