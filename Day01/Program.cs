@@ -24,19 +24,18 @@ static void Part1()
         if (dir == 'L')
         {
             pos -= distance;
+            if (pos < minPos)
+            {
+                pos += maxPos + 1;
+            }
         }
         else if (dir == 'R')
         {
             pos += distance;
-        }
-
-        if (pos < minPos)
-        {
-            pos += maxPos + 1;
-        }
-        else if (pos > maxPos)
-        {
-            pos -= maxPos + 1;
+            if (pos > maxPos)
+            {
+                pos %= maxPos + 1;
+            }
         }
 
         if (pos == 0)
