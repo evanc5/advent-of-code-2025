@@ -55,11 +55,17 @@ static void Part2()
 
     foreach (var line in input)
     {
+        Console.WriteLine($"start {pos} turn {line} count {count}");
+
         var dir = line[0];
         var distance = int.Parse(line.Substring(1));
 
         if (dir == 'L')
         {
+            if (pos == 0)
+            {
+                count--;
+            }
             pos -= distance;
         }
         else if (dir == 'R')
@@ -88,6 +94,7 @@ static void Part2()
         {
             count++;
         }
+        Console.WriteLine($"end {pos} count {count}");
     }
 
     Console.WriteLine($"Part 2 {count}");
