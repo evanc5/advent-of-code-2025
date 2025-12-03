@@ -14,7 +14,12 @@ static void Part1()
     foreach (var line in input)
     {
         var dir = line[0];
-        var distance = int.Parse(line.Substring(1));
+        var distance = int.Parse(line[1..]);
+
+        if (distance >= (maxPos + 1))
+        {
+            distance %= maxPos + 1;
+        }
 
         if (dir == 'L')
         {
@@ -25,11 +30,11 @@ static void Part1()
             pos += distance;
         }
 
-        while (pos < minPos)
+        if (pos < minPos)
         {
             pos += maxPos + 1;
         }
-        while (pos > maxPos)
+        else if (pos > maxPos)
         {
             pos -= maxPos + 1;
         }
