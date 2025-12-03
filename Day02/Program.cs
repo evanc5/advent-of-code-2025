@@ -33,6 +33,7 @@ static void Part2()
     var input = File.ReadAllText("input.txt").Split(',');
 
     long total = 0;
+    bool mismatch = false;
 
     foreach (var item in input)
     {
@@ -43,9 +44,31 @@ static void Part2()
         for (long i = start; i <= end; i++)
         {
             var number = i.ToString();
-            // add to total if the number contains a sequence of digits that appear at least twice, e.g. 123123123, 55555, etc
+            for (int len = 1; len <= number.Length / 2; len++)
+            {
+                if (number.Length % len != 0)
+                {
+                    continue;
+                }
+                var firstPart = number[..len];
+                foreach (var j in Enumerable.Range(1, number.Length / len - 1))
+                {
+                    var part = number[(j * len)..(j * len + len)];
+                    if (part != firstPart)
+                    {
+                        mismatch = true;
+                        break;
+                    }
+                }
+                if (!mismatch)
+                {
+                    total += i;
+                    break;
+                }
+                mismatch = false;
+            }
         }
     }
 
-    Console.WriteLine($"Part 2 ");
+    Console.WriteLine($"Part 2 {total}");
 }
