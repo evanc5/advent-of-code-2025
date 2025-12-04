@@ -3,7 +3,7 @@ Part2();
 
 static void Part1()
 {
-    var input = File.ReadAllLines("input.txt");
+    var input = File.ReadAllLines("input.txt").Select(line => line.ToArray()).ToArray();
     var startTime = System.Diagnostics.Stopwatch.GetTimestamp();
 
     int total = 0;
@@ -15,7 +15,7 @@ static void Part1()
 
 static void Part2()
 {
-    var input = File.ReadAllLines("input.txt");
+    var input = File.ReadAllLines("input.txt").Select(line => line.ToArray()).ToArray();
     var startTime = System.Diagnostics.Stopwatch.GetTimestamp();
 
     int total = 0;
