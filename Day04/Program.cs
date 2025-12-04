@@ -24,17 +24,19 @@ static void Part1()
             {
                 for (int c = col - 1; c <= col + 1; c++)
                 {
-                    if (r < 0 || r >= input.Length || c < 0 || c >= input[row].Length)
+                    if (r < 0 || r >= input.Length || c < 0 || c >= input[row].Length || r == row && c == col)
+                    {
                         continue;
-                    if (r == row && c == col)
-                        continue;
+                    }
 
                     char neighbor = input[r][c];
                     if (neighbor == '@')
                     {
                         currentCount++;
+                        if (currentCount >= 4) break;
                     }
                 }
+                if (currentCount >= 4) break;
             }
             if (currentCount < 4)
             {
@@ -55,8 +57,10 @@ static void Part2()
 
     int total = 0;
     int lastTotal = -1;
-    while (true)
+    while (total != lastTotal)
     {
+        lastTotal = total;
+
         for (int row = 0; row < input.Length; row++)
         {
             for (int col = 0; col < input[row].Length; col++)
@@ -73,18 +77,21 @@ static void Part2()
                 {
                     for (int c = col - 1; c <= col + 1; c++)
                     {
-                        if (r < 0 || r >= input.Length || c < 0 || c >= input[row].Length)
+                        if (r < 0 || r >= input.Length || c < 0 || c >= input[row].Length || r == row && c == col)
+                        {
                             continue;
-                        if (r == row && c == col)
-                            continue;
+                        }
 
                         char neighbor = input[r][c];
                         if (neighbor == '@')
                         {
                             currentCount++;
+                            if (currentCount >= 4) break;
                         }
                     }
+                    if (currentCount >= 4) break;
                 }
+
                 if (currentCount < 4)
                 {
                     input[row][col] = 'x';
@@ -92,11 +99,6 @@ static void Part2()
                 }
             }
         }
-        if (total == lastTotal)
-        {
-            break;
-        }
-        lastTotal = total;
     }
 
     var elapsedTime = System.Diagnostics.Stopwatch.GetElapsedTime(startTime);
