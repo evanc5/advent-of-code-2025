@@ -39,6 +39,8 @@ static void Part2()
 
     int total = 0;
 
+    var freshLines = input.Where(line => line.Contains('-'));
+
     var elapsedTime = System.Diagnostics.Stopwatch.GetElapsedTime(startTime);
     Console.WriteLine($"Part 2: {total}");
     System.Diagnostics.Debug.WriteLine($"Part 2: {elapsedTime}");
