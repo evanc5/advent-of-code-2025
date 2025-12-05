@@ -41,6 +41,13 @@ static void Part2()
 
     var freshLines = input.Where(line => line.Contains('-'));
 
+    foreach (var freshLine in freshLines)
+    {
+        var split = freshLine.Split('-');
+        var start = long.Parse(split[0]);
+        var end = long.Parse(split[1]);
+    }
+
     var elapsedTime = System.Diagnostics.Stopwatch.GetElapsedTime(startTime);
     Console.WriteLine($"Part 2: {total}");
     System.Diagnostics.Debug.WriteLine($"Part 2: {elapsedTime}");
