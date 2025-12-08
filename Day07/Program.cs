@@ -7,6 +7,31 @@ static void Part1()
     var startTime = System.Diagnostics.Stopwatch.GetTimestamp();
 
     int total = 0;
+    var beams = new HashSet<int>
+    {
+        input[0].IndexOf('S')
+    };
+    foreach (var line in input)
+    {
+        if (line.Contains('^'))
+        {
+            var newBeams = new HashSet<int>();
+            foreach (var beam in beams)
+            {
+                if (line[beam] == '^')
+                {
+                    total++;
+                    newBeams.Add(beam + 1);
+                    newBeams.Add(beam - 1);
+                }
+                else
+                {
+                    newBeams.Add(beam);
+                }
+            }
+            beams = newBeams;
+        }
+    }
 
     var elapsedTime = System.Diagnostics.Stopwatch.GetElapsedTime(startTime);
     Console.WriteLine($"Part 1: {total}");
