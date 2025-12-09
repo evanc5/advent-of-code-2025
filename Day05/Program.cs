@@ -83,7 +83,7 @@ static void Part2()
 
     foreach (var (start, end) in ranges)
     {
-        total += (int)(end - start + 1);
+        total += end - start + 1;
     }
 
     var elapsedTime = System.Diagnostics.Stopwatch.GetElapsedTime(startTime);
