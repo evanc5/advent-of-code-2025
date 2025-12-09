@@ -60,13 +60,14 @@ static void Part2()
         {
             for (int j = i + 1; j < ranges.Count; j++)
             {
-                var rangeA = ranges[i];
-                var rangeB = ranges[j];
+                var (start1, end1) = ranges[i];
+                var (start2, end2) = ranges[j];
 
-                if (rangeA.Start <= rangeB.End && rangeB.Start <= rangeA.End)
+                if (start1 <= end2 && start2 <= end1 ||
+                    start1 == end2 + 1 || start2 == end1 + 1)
                 {
-                    var newStart = Math.Min(rangeA.Start, rangeB.Start);
-                    var newEnd = Math.Max(rangeA.End, rangeB.End);
+                    var newStart = Math.Min(start1, start2);
+                    var newEnd = Math.Max(end1, end2);
                     ranges[i] = (newStart, newEnd);
                     ranges.RemoveAt(j);
                     matchFound = true;
@@ -80,9 +81,9 @@ static void Part2()
         }
     }
 
-    foreach (var range in ranges)
+    foreach (var (start, end) in ranges)
     {
-        total += (int)(range.End - range.Start + 1);
+        total += (int)(end - start + 1);
     }
 
     var elapsedTime = System.Diagnostics.Stopwatch.GetElapsedTime(startTime);
