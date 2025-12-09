@@ -28,13 +28,13 @@ static void Part1()
 
 static void Part2()
 {
-    var input = File.ReadAllLines("input.txt");
+    var lines = File.ReadAllLines("input.txt");
     var startTime = System.Diagnostics.Stopwatch.GetTimestamp();
 
     long total = 0;
 
-    var numberLines = input.Where(l => l.Any(char.IsDigit)).ToArray();
-    var ops = input.Last().Split(' ', StringSplitOptions.RemoveEmptyEntries | StringSplitOptions.TrimEntries);
+    var numberLines = lines.Where(l => l.Any(char.IsDigit)).ToArray();
+    var ops = lines.Last().Split(' ', StringSplitOptions.RemoveEmptyEntries | StringSplitOptions.TrimEntries);
     var currentOp = 0;
     var lineTotal = ops[currentOp] == "+" ? 0L : 1L;
 

@@ -3,13 +3,13 @@ Part2();
 
 static void Part1()
 {
-    var input = File.ReadAllLines("input.txt");
+    var lines = File.ReadAllLines("input.txt");
     var startTime = System.Diagnostics.Stopwatch.GetTimestamp();
 
     int count = 0;
 
-    var freshLines = input.Where(line => line.Contains('-'));
-    var availableIngredients = input.Where(line => !string.IsNullOrWhiteSpace(line) && !line.Contains('-')).Select(long.Parse);
+    var freshLines = lines.Where(line => line.Contains('-'));
+    var availableIngredients = lines.Where(line => !string.IsNullOrWhiteSpace(line) && !line.Contains('-')).Select(long.Parse);
 
     foreach (var availableIngredient in availableIngredients)
     {
@@ -34,18 +34,16 @@ static void Part1()
 
 static void Part2()
 {
-    var input = File.ReadAllLines("input.txt");
+    var lines = File.ReadAllLines("input.txt").Where(line => line.Contains('-'));
     var startTime = System.Diagnostics.Stopwatch.GetTimestamp();
 
     long total = 0;
 
-    var freshLines = input.Where(line => line.Contains('-'));
+    var ranges = new List<(long start, long end)>();
 
-    var ranges = new List<(long Start, long End)>();
-
-    foreach (var freshLine in freshLines)
+    foreach (var line in lines)
     {
-        var split = freshLine.Split('-');
+        var split = line.Split('-');
         var start = long.Parse(split[0]);
         var end = long.Parse(split[1]);
 

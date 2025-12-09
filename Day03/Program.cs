@@ -3,13 +3,13 @@ Part2();
 
 static void Part1()
 {
-    var input = File.ReadAllLines("input.txt");
+    var lines = File.ReadAllLines("input.txt");
     var startTime = System.Diagnostics.Stopwatch.GetTimestamp();
 
     long total = 0;
     const int batteryCount = 2;
 
-    foreach (var line in input)
+    foreach (var line in lines)
     {
         total += ProcessLine(line, batteryCount);
     }
@@ -21,13 +21,13 @@ static void Part1()
 
 static void Part2()
 {
-    var input = File.ReadAllLines("input.txt");
+    var lines = File.ReadAllLines("input.txt");
     var startTime = System.Diagnostics.Stopwatch.GetTimestamp();
 
     long total = 0;
     const int batteryCount = 12;
 
-    foreach (var line in input)
+    foreach (var line in lines)
     {
         total += ProcessLine(line, batteryCount);
     }

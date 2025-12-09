@@ -3,7 +3,7 @@ Part2();
 
 static void Part1()
 {
-    var input = File.ReadAllLines("input.txt");
+    var lines = File.ReadAllLines("input.txt");
     var startTime = System.Diagnostics.Stopwatch.GetTimestamp();
 
     int pos = 50;
@@ -12,7 +12,7 @@ static void Part1()
     const int minPos = 0;
     const int maxPos = 99;
 
-    foreach (var line in input)
+    foreach (var line in lines)
     {
         var dir = line[0];
         var distance = int.Parse(line[1..]);
@@ -52,7 +52,7 @@ static void Part1()
 
 static void Part2()
 {
-    var input = File.ReadAllLines("input.txt");
+    var lines = File.ReadAllLines("input.txt");
     var startTime = System.Diagnostics.Stopwatch.GetTimestamp();
 
     int pos = 50;
@@ -62,7 +62,7 @@ static void Part2()
     const int minPos = 0;
     const int maxPos = 99;
 
-    foreach (var line in input)
+    foreach (var line in lines)
     {
         var dir = line[0];
         var distance = int.Parse(line[1..]);
